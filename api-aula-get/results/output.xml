@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on win32)" generated="20231114 18:25:51.972" rpa="false" schemaversion="4">
+<suite id="s1" name="Api-Aula-Get" source="C:\Users\a892326\OneDrive - EDITORA E DISTRIBUIDORA EDUCACIONAL S A\Documentos\Projetos\api-aula-get">
+<suite id="s1-s1" name="Put" source="C:\Users\a892326\OneDrive - EDITORA E DISTRIBUIDORA EDUCACIONAL S A\Documentos\Projetos\api-aula-get\put.robot">
+<test id="s1-s1-t1" name="TC01 - Atualizar produto existente" line="26">
+<kw name="Atualizar um produto">
+<arg>id=88</arg>
+<arg>title=iphone XR</arg>
+<arg>price=7000</arg>
+<arg>brand=apple</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Content-type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 18:25:52.178" level="INFO">&amp;{headers} = { Content-type=application/json }</msg>
+<status status="PASS" starttime="20231114 18:25:52.177" endtime="20231114 18:25:52.178"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{body}</var>
+<arg>title=${title}</arg>
+<arg>description=${description}</arg>
+<arg>price=${price}</arg>
+<arg>brand=${brand}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20231114 18:25:52.179" level="INFO">&amp;{body} = { title=iphone XR | description=none | price=7000 | brand=apple }</msg>
+<status status="PASS" starttime="20231114 18:25:52.178" endtime="20231114 18:25:52.180"/>
+</kw>
+<kw name="Replace String" library="String">
+<var>${UPDATE_PRODUCT}</var>
+<arg>${UPDATE_PRODUCT}</arg>
+<arg>id-produto</arg>
+<arg>${id}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20231114 18:25:52.181" level="INFO">${UPDATE_PRODUCT} = products/88</msg>
+<status status="PASS" starttime="20231114 18:25:52.180" endtime="20231114 18:25:52.181"/>
+</kw>
+<kw name="PUT" library="RequestsLibrary">
+<arg>url=${HOST}/${UPDATE_PRODUCT}</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a PUT request.</doc>
+<msg timestamp="20231114 18:25:53.220" level="INFO">PUT Request : url=https://dummyjson.com/products/88 
+ path_url=/products/88 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-type': 'application/json', 'Content-Length': '80'} 
+ body=b'{"title": "iphone XR", "description": "none", "price": "7000", "brand": "apple"}' 
+ </msg>
+<msg timestamp="20231114 18:25:53.221" level="INFO">PUT Response : url=https://dummyjson.com/products/88 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '120', 'x-ratelimit-remaining': '118', 'date': 'Tue, 14 Nov 2023 21:25:53 GMT', 'x-ratelimit-reset': '1699997170', 'content-type': 'application/json; charset=utf-8', 'content-length': '464', 'etag': 'W/"1d0-cmDE3WwZSaxpbkuo+LXTi6ka3fg"', 'vary': 'Accept-Encoding', 'server': 'railway'} 
+ body={"id":88,"title":"iphone XR","price":"7000","stock":42,"rating":4.98,"images":["https://i.dummyjson.com/data/products/88/1.jpg","https://i.dummyjson.com/data/products/88/2.jpg","https://i.dummyjson.com/data/products/88/3.jpg","https://i.dummyjson.com/data/products/88/4.webp","https://i.dummyjson.com/data/products/88/thumbnail.jpg"],"thumbnail":"https://i.dummyjson.com/data/products/88/thumbnail.jpg","description":"none","brand":"apple","category":"automotive"} 
+ </msg>
+<status status="PASS" starttime="20231114 18:25:52.181" endtime="20231114 18:25:53.221"/>
+</kw>
+<status status="PASS" starttime="20231114 18:25:52.175" endtime="20231114 18:25:53.222"/>
+</kw>
+<status status="PASS" starttime="20231114 18:25:52.173" endtime="20231114 18:25:53.223"/>
+</test>
+<status status="PASS" starttime="20231114 18:25:52.027" endtime="20231114 18:25:53.226"/>
+</suite>
+<status status="PASS" starttime="20231114 18:25:51.978" endtime="20231114 18:25:53.229"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Api-Aula-Get">Api-Aula-Get</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Put">Api-Aula-Get.Put</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
